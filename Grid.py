@@ -2,7 +2,7 @@ import pygame
 import random
 import heapq
 
-class GridGame:
+class Grid:
     def __init__(self, screen, grid_size, cell_size):
         # Initialize move counter first
         self.move_count = 0
@@ -120,36 +120,3 @@ class GridGame:
                     heapq.heappush(open_set, (f_score[neighbor], neighbor))
         
         return []
-
-def main():
-    pygame.init()
-    pygame.display.set_caption("Grid Game")
-    
-    # Get screen dimensions
-    screen_width = pygame.display.Info().current_w
-    screen_height = pygame.display.Info().current_h
-    
-    # Set grid size and cell size
-    grid_size = 16
-    cell_size = 40  # You can change this value to set a different cell size
-    
-    # Calculate window size
-    window_size = grid_size * cell_size
-    
-    # Create screen
-    screen = pygame.display.set_mode((window_size, window_size))
-    
-    game = GridGame(screen, grid_size, cell_size)
-    
-    running = True
-    while running:
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                running = False
-            elif event.type == pygame.USEREVENT:
-                game.move_player()
-    
-    pygame.quit()
-
-if __name__ == "__main__":
-    main()
