@@ -16,16 +16,18 @@ class Tilemap():
     # Load individual tiles
     def load_tiles(self):
         # Tileset dimensions
-        w, h = self.tileset.get_rect().size
+        w, h = self.tileset.get_width(), self.tileset.get_height()
 
-        # Tilesize
-        dx = 32 
-        dy = 32
+        # Tile size
+        dx = 32
+        tile_height = 32
 
-        for i in range(0, w, dx):
-            for j in range(0, h, dy):
-                # Create new tile
-                tile = pygame.Surface((32, 32)).blit(self.tileset, (0, 0), (i, j, *(32, 32)))
-                
-                # Add to list of tiles
+        # Iterate over the tileset to extract each tile
+        for y in range(0, h, tile_height):
+            for x in range(0, w, dx):
+                # Create a tile
+                tile = pygame.Surface((dx, tile_height), pygame.SRCALPHA)  
+                tile.blit(self.tileset, (0, 0), pygame.Rect(x, y, dx, tile_height))
+
+                # Add the tile surface to the list
                 self.tiles.append(tile)
