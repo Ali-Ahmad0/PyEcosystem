@@ -22,10 +22,11 @@ def main():
     tilemap_object = Tilemap("assets/tilemap/spritesheet.png", "assets/tilemap/tilemap.json")
     
     while True:
-        # Test draw tiles
         for i in range(11):
             for j in range(11):
-                screen.blit(tilemap_object.tiles[(i + 1) * j].convert(), (i * 32, j * 32))
+                index = i + 11 * j
+                if index < len(tilemap_object.tiles):
+                    screen.blit(tilemap_object.tiles[index].convert(), (i * 32, j * 32))
         
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
