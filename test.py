@@ -10,7 +10,7 @@ def main():
     screen = pygame.display.set_mode((480, 360))
     
     # Load tilemap
-    tilemap_object = Tilemap("assets/tilemap/isometric_tileset.png", "assets/tilemap/tilemap.json")
+    tilemap_object = Tilemap("assets/tilemap/isometric_tileset.png", "assets/tilemap/tilemap.json", (220, 40))
     
     while True:
         tilemap_object.render(screen)
@@ -19,7 +19,6 @@ def main():
             if event.type == pygame.QUIT:
                 exit()
             
-            #grid.move_player()
         pygame.display.flip()
 
 if __name__ == "__main__":

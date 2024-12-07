@@ -37,8 +37,10 @@ class Tileset():
                 self.tiles.append(tile_surface)
 
 class Tilemap():
-    def __init__(self, tileset_path, tilemap_path):
+    def __init__(self, tileset_path, tilemap_path, position=(0, 0)):
         self.tileset = Tileset(tileset_path)
+
+        self.position = position
 
         self.tilemap_path = tilemap_path
         self.sprite_group = pygame.sprite.Group()
@@ -69,9 +71,14 @@ class Tilemap():
 
                 # Skip if (empty tile)
                 if tile_index >= 0:  
-                    # Generate a new tile
+                    # Get the surface of the tile
                     tile_surface = self.tileset.tiles[tile_index]
-                    tile = Tile((col * 32, row * 32), tile_surface, self.sprite_group)
+
+                    # Calculate x, y coordinates
+                    x = self.position[0] + (col - row) * 16
+                    y = self.position[1] + (col + row) * 8
+
+                    tile = Tile((x, y), tile_surface, self.sprite_group)
 
     def render(self, screen):
         for tile in self.sprite_group:
