@@ -1,6 +1,7 @@
 
 import pygame
 import json
+from camera import *
 
 class Tile(pygame.sprite.Sprite):
     def __init__(self, position, surface, *groups):
@@ -82,4 +83,4 @@ class Tilemap():
 
     def render(self, screen):
         for tile in self.sprite_group:
-            screen.blit(tile.image, tile.rect)
+            Camera.apply(tile.image, tile.rect, screen)
