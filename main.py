@@ -1,6 +1,7 @@
 import pygame
 from tilemap import *
 from camera import *
+from Grid import *
 
 class Main():
     def __init__(self):
@@ -13,12 +14,16 @@ class Main():
         self.clock = pygame.time.Clock()
 
         # Initialize world map
-        self.world_map = Tilemap("assets/tilemap/isometric_tileset.png", "assets/tilemap/tilemap.json")
+        self.world_map = Tilemap("../AI-based-Ecological-Simulation/assets/tilemap/isometric_tileset.png", "assets/tilemap/tilemap.json")
+
+        # Initialize grid with map_data from world_map
+        self.grid = Grid(self.screen, self.world_map.map_data)
 
     # Simulation render logic
     def render(self):
         self.screen.fill((0, 0, 0))
         self.world_map.render(self.screen)
+        # self.grid.draw_grid()
 
         pygame.display.update()
 
@@ -52,4 +57,3 @@ class Main():
 if __name__ == "__main__":
     simulation = Main()
     simulation.main_loop()
-    
