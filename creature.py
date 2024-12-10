@@ -1,18 +1,19 @@
 import pygame
+from camera import *
 
 class Creature(pygame.sprite.Sprite):
     def __init__(self, x, y, *groups):
         super().__init__(*groups)
         
         # TO DO: implement this
-        self.speed
-        self.stamina
+        self.speed = 0
+        self.stamina = 0
         
-        self.max_hunger
-        self.cur_hunger
+        self.max_hunger = 0
+        self.cur_hunger = 0
 
-        self.max_thirst
-        self.cur_thirst
+        self.max_thirst = 0
+        self.cur_thirst = 0
 
         # Sprite sheets for animations
         self.sprite_sheets = []
@@ -55,13 +56,24 @@ class Creature(pygame.sprite.Sprite):
             # Get number of rames
             num_frames = sheet_width // frame_width
 
-            for x in range(num_frames):
-                frame_rect = pygame.Rect(
-                    x * frame_width, frame_height, frame_width, frame_height
+            # for x in range(num_frames):
+            #     frame_rect = pygame.Rect(
+            #         x * frame_width, frame_height, frame_width, frame_height
+            #     )
+            #     frame = self.sprite_sheets[i].subsurface(frame_rect).copy()
+            #     self.animations[animation_key].append(frame)
+
+            for x in range(0, sheet_height, frame_width):
+                # Create a surface for individual frame
+                frame_surface = pygame.Surface((frame_width, frame_height), pygame.SRCALPHA)
+                frame_surface.blit(self.sprite_sheets[i], (0, 0),                 
+                    pygame.Rect(x, 0, frame_width, frame_height)
                 )
-                frame = self.sprite_sheets[i].subsurface(frame_rect).copy()
-                self.animations[animation_key].append(frame)
+                
+                # Add the frame to the corresponding animation
+                self.animations[animation_key].append(frame_surface)
 
 
-    def animate(self, speed):
-        pass
+    def render(self, screen):
+        Camera.apply(self.image, self.rect, screen)
+        

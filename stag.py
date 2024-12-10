@@ -24,4 +24,11 @@ class Stag(Creature):
 
         self.frame_size = (32, 41)
 
-        super.load_anim()
+        super().load_anim()
+
+        print(f"Animation: {self.curr_animation}, {self.curr_frame}")
+
+        self.image = self.animations[self.curr_animation][self.curr_frame]
+        self.rect = self.image.get_rect()
+        self.rect.topleft = [x, y]
+
