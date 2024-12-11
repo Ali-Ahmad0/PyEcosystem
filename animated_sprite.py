@@ -23,8 +23,8 @@ class AnimatedSprite(pygame.sprite.Sprite):
 
         # Animation properties
         self.anim_timer = 0
+        self.frame_time = 0
         self.frame_index = 0
-
 
     # Load animations as individual frames
     def load_anim(self, frame_size):
@@ -60,8 +60,8 @@ class AnimatedSprite(pygame.sprite.Sprite):
         # Update timer by delta time
         self.anim_timer += 1 / 60
 
-        # Update frames every 0.15 seconds
-        if self.anim_timer >= 0.15:
+        # Update frames after every frame time
+        if self.anim_timer >= self.frame_time:
             anim = self.animations[self.cur_animation]
 
             # Go to the next frame

@@ -3,6 +3,41 @@ from tilemap import *
 from camera import *
 from grid import *
 from stag import *
+from wolf import *
+
+# Camera handling
+last_zoom_time = 0
+ZOOM_COOLDOWN = 150
+
+def update_camera():
+        global last_zoom_time
+        keys = pygame.key.get_pressed()
+        
+        # Move camera
+        camera_dx = 0
+        camera_dy = 0
+
+        if keys[pygame.K_LEFT]:
+            camera_dx = -1
+        if keys[pygame.K_RIGHT]:
+            camera_dx = 1
+        if keys[pygame.K_UP]:
+            camera_dy = -1
+        if keys[pygame.K_DOWN]:
+            camera_dy = 1
+        
+        Camera.move(camera_dx, camera_dy)
+
+        # Zoom
+        current_time = pygame.time.get_ticks()
+        if (current_time - last_zoom_time >= ZOOM_COOLDOWN):
+            if keys[pygame.K_PAGEUP]:
+                Camera.zoom += 1 if Camera.zoom < 4 else 0
+                last_zoom_time = current_time
+
+            if keys[pygame.K_PAGEDOWN]:
+                Camera.zoom -= 1 if Camera.zoom > 1 else 0
+                last_zoom_time = current_time
 
 class Main():
     def __init__(self):
@@ -20,14 +55,14 @@ class Main():
         # Initialize grid with map_data from world_map
         self.grid = Grid(self.screen, self.world_map)
         self.stag = Stag(0, 0)
-
-        Camera.zoom = 2
+        self.wolf = Wolf(-16, 196)
 
     # Simulation render logic
     def render(self):
         self.screen.fill((0, 0, 0))
         self.world_map.render(self.screen)
         self.stag.render(self.screen)
+        self.wolf.render(self.screen)
 
         pygame.display.update()
 
@@ -40,22 +75,7 @@ class Main():
     # Simulation update logic
     def update(self):
         
-        keys = pygame.key.get_pressed()
-        
-        # Move camera
-        camera_dx = 0
-        camera_dy = 0
-
-        if keys[pygame.K_LEFT]:
-            camera_dx = -1
-        if keys[pygame.K_RIGHT]:
-            camera_dx = 1
-        if keys[pygame.K_UP]:
-            camera_dy = -1
-        if keys[pygame.K_DOWN]:
-            camera_dy = 1
-        
-        Camera.move(camera_dx, camera_dy)
+        update_camera()
         
         self.clock.tick(60)
 

@@ -28,3 +28,5 @@ class Stag(Creature):
         self.anim_sprite.rect = self.anim_sprite.image.get_rect()
         self.anim_sprite.rect.topleft = [x, y]
 
+        self.anim_sprite.frame_time = 0.15
+
