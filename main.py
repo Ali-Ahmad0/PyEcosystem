@@ -39,17 +39,24 @@ class Main():
 
     # Simulation update logic
     def update(self):
-        # Move camera
+        
         keys = pygame.key.get_pressed()
-        if keys[pygame.K_LEFT]:
-            Camera.move(-1, 0)
-        if keys[pygame.K_RIGHT]:
-            Camera.move(1, 0)
-        if keys[pygame.K_UP]:
-            Camera.move(0, -1)
-        if keys[pygame.K_DOWN]:
-            Camera.move(0, 1)
+        
+        # Move camera
+        camera_dx = 0
+        camera_dy = 0
 
+        if keys[pygame.K_LEFT]:
+            camera_dx = -1
+        if keys[pygame.K_RIGHT]:
+            camera_dx = 1
+        if keys[pygame.K_UP]:
+            camera_dy = -1
+        if keys[pygame.K_DOWN]:
+            camera_dy = 1
+        
+        Camera.move(camera_dx, camera_dy)
+        
         self.clock.tick(60)
 
     def main_loop(self):
