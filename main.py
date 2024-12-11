@@ -19,7 +19,9 @@ class Main():
 
         # Initialize grid with map_data from world_map
         self.grid = Grid(self.screen, self.world_map)
-        self.stag = Stag(0, 0, pygame.sprite.Group())
+        self.stag = Stag(0, 0)
+
+        Camera.zoom = 2
 
     # Simulation render logic
     def render(self):
