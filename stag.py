@@ -5,22 +5,22 @@ class Stag(Creature):
         super().__init__(x, y)
 
         # Idle animations
-        self.anim_sprite.sprite_sheets.append(pygame.image.load("assets/sprites/stag/critter_stag_NE_idle.png"))
-        self.anim_sprite.sprite_sheets.append(pygame.image.load("assets/sprites/stag/critter_stag_NW_idle.png"))
-        self.anim_sprite.sprite_sheets.append(pygame.image.load("assets/sprites/stag/critter_stag_SE_idle.png"))
-        self.anim_sprite.sprite_sheets.append(pygame.image.load("assets/sprites/stag/critter_stag_SW_idle.png"))
+        self.anim_sprite.sprite_sheets.append(pygame.image.load("PyEcosystem/assets/sprites/stag/critter_stag_NE_idle.png"))
+        self.anim_sprite.sprite_sheets.append(pygame.image.load("PyEcosystem/assets/sprites/stag/critter_stag_NW_idle.png"))
+        self.anim_sprite.sprite_sheets.append(pygame.image.load("PyEcosystem/assets/sprites/stag/critter_stag_SE_idle.png"))
+        self.anim_sprite.sprite_sheets.append(pygame.image.load("PyEcosystem/assets/sprites/stag/critter_stag_SW_idle.png"))
         
         # Walk animations
-        self.anim_sprite.sprite_sheets.append(pygame.image.load("assets/sprites/stag/critter_stag_NE_walk.png"))
-        self.anim_sprite.sprite_sheets.append(pygame.image.load("assets/sprites/stag/critter_stag_NW_walk.png"))
-        self.anim_sprite.sprite_sheets.append(pygame.image.load("assets/sprites/stag/critter_stag_SE_walk.png"))
-        self.anim_sprite.sprite_sheets.append(pygame.image.load("assets/sprites/stag/critter_stag_SW_walk.png"))
+        self.anim_sprite.sprite_sheets.append(pygame.image.load("PyEcosystem/assets/sprites/stag/critter_stag_NE_walk.png"))
+        self.anim_sprite.sprite_sheets.append(pygame.image.load("PyEcosystem/assets/sprites/stag/critter_stag_NW_walk.png"))
+        self.anim_sprite.sprite_sheets.append(pygame.image.load("PyEcosystem/assets/sprites/stag/critter_stag_SE_walk.png"))
+        self.anim_sprite.sprite_sheets.append(pygame.image.load("PyEcosystem/assets/sprites/stag/critter_stag_SW_walk.png"))
 
         # Run animations
-        self.anim_sprite.sprite_sheets.append(pygame.image.load("assets/sprites/stag/critter_stag_NE_run.png"))
-        self.anim_sprite.sprite_sheets.append(pygame.image.load("assets/sprites/stag/critter_stag_NW_run.png"))
-        self.anim_sprite.sprite_sheets.append(pygame.image.load("assets/sprites/stag/critter_stag_SE_run.png"))
-        self.anim_sprite.sprite_sheets.append(pygame.image.load("assets/sprites/stag/critter_stag_SW_run.png")) 
+        self.anim_sprite.sprite_sheets.append(pygame.image.load("PyEcosystem/assets/sprites/stag/critter_stag_NE_run.png"))
+        self.anim_sprite.sprite_sheets.append(pygame.image.load("PyEcosystem/assets/sprites/stag/critter_stag_NW_run.png"))
+        self.anim_sprite.sprite_sheets.append(pygame.image.load("PyEcosystem/assets/sprites/stag/critter_stag_SE_run.png"))
+        self.anim_sprite.sprite_sheets.append(pygame.image.load("PyEcosystem/assets/sprites/stag/critter_stag_SW_run.png")) 
 
         # Load the animations
         self.anim_sprite.load_anim((32, 41))

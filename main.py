@@ -1,7 +1,7 @@
 import pygame
 from tilemap import *
 from camera import *
-from grid import *
+from Grid import *
 from stag import *
 from wolf import *
 
@@ -50,7 +50,7 @@ class Main():
         self.clock = pygame.time.Clock()
 
         # Initialize world map
-        self.world_map = Tilemap("assets/tilemap/isometric_tileset.png", "assets/tilemap/tilemap.json")
+        self.world_map = Tilemap("PyEcosystem/assets/tilemap/isometric_tileset.png", "PyEcosystem/assets/tilemap/tilemap.json")
 
         # Initialize grid with map_data from world_map
         self.grid = Grid(self.screen, self.world_map)

@@ -5,17 +5,16 @@ class Wolf(Creature):
         super().__init__(x, y)
 
         # Idle animations
-        self.anim_sprite.sprite_sheets.append(pygame.image.load("assets\sprites\wolf\wolf-idle-NE.png"))
-        self.anim_sprite.sprite_sheets.append(pygame.image.load("assets\sprites\wolf\wolf-idle-NW.png"))
-        self.anim_sprite.sprite_sheets.append(pygame.image.load("assets\sprites\wolf\wolf-idle-SE.png"))
-        self.anim_sprite.sprite_sheets.append(pygame.image.load("assets\sprites\wolf\wolf-idle-SW.png"))
+        self.anim_sprite.sprite_sheets.append(pygame.image.load("PyEcosystem/assets/sprites/wolf/wolf-idle-NE.png"))
+        self.anim_sprite.sprite_sheets.append(pygame.image.load("PyEcosystem/assets/sprites/wolf/wolf-idle-NW.png"))
+        self.anim_sprite.sprite_sheets.append(pygame.image.load("PyEcosystem/assets/sprites/wolf/wolf-idle-SE.png"))
+        self.anim_sprite.sprite_sheets.append(pygame.image.load("PyEcosystem/assets/sprites/wolf/wolf-idle-SW.png"))
 
         # Run animations
-        self.anim_sprite.sprite_sheets.append(pygame.image.load("assets\sprites\wolf\wolf-run-NE.png"))
-        self.anim_sprite.sprite_sheets.append(pygame.image.load("assets\sprites\wolf\wolf-run-NW.png"))
-        self.anim_sprite.sprite_sheets.append(pygame.image.load("assets\sprites\wolf\wolf-run-SE.png"))
-        self.anim_sprite.sprite_sheets.append(pygame.image.load("assets\sprites\wolf\wolf-run-SW.png"))
-
+        self.anim_sprite.sprite_sheets.append(pygame.image.load("PyEcosystem/assets/sprites/wolf/wolf-run-NE.png"))
+        self.anim_sprite.sprite_sheets.append(pygame.image.load("PyEcosystem/assets/sprites/wolf/wolf-run-NW.png"))
+        self.anim_sprite.sprite_sheets.append(pygame.image.load("PyEcosystem/assets/sprites/wolf/wolf-run-SE.png"))
+        self.anim_sprite.sprite_sheets.append(pygame.image.load("PyEcosystem/assets/sprites/wolf/wolf-run-SW.png"))
 
         # Load the animations
         self.anim_sprite.load_anim((64, 64))
