@@ -23,7 +23,7 @@ class AnimatedSprite(pygame.sprite.Sprite):
 
         # Animation properties
         self.anim_timer = 0
-        self.frame_time = 0
+        self.frame_time = 0.15
         self.frame_index = 0
 
     # Load animations as individual frames

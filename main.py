@@ -18,13 +18,13 @@ def update_camera():
         camera_dy = 0
 
         if keys[pygame.K_LEFT]:
-            camera_dx = -1
+            camera_dx = -1.5
         if keys[pygame.K_RIGHT]:
-            camera_dx = 1
+            camera_dx = 1.5
         if keys[pygame.K_UP]:
-            camera_dy = -1
+            camera_dy = -1.5
         if keys[pygame.K_DOWN]:
-            camera_dy = 1
+            camera_dy = 1.5
         
         Camera.move(camera_dx, camera_dy)
 
@@ -56,6 +56,7 @@ class Main():
         self.grid = Grid(self.screen, self.world_map)
         self.stag = Stag(0, 0)
         self.wolf = Wolf(-16, 196)
+        self.wolf.anim_sprite.cur_animation = "idle_se"
 
     # Simulation render logic
     def render(self):
