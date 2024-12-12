@@ -1,7 +1,7 @@
 import pygame
 from tilemap import *
 from camera import *
-from Grid import *
+from grid import *
 from stag import *
 from wolf import *
 
