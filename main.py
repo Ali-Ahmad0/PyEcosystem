@@ -52,11 +52,13 @@ class Main():
         # Initialize world map
         self.world_map = Tilemap("PyEcosystem/assets/tilemap/isometric_tileset.png", "PyEcosystem/assets/tilemap/tilemap.json")
 
-        # Initialize grid with map_data from world_map
+        # Initialize grid with world_map
         self.grid = Grid(self.screen, self.world_map)
         self.stag = Stag(0, 0)
         self.wolf = Wolf(-16, 196)
         self.wolf.anim_sprite.cur_animation = "idle_se"
+
+        self.grid.print_data()
 
     # Simulation render logic
     def render(self):

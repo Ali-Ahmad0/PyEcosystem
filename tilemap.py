@@ -47,10 +47,10 @@ class Tilemap():
         self.sprite_group = pygame.sprite.Group()
 
         self.tilemap = None
-        self.map_w = 0
-        self.map_h = 0
+        self.w = 0
+        self.h = 0
 
-        self.map_data = []
+        self.data = []
         self.load_tilemap()
 
     # Draw the tilemap based on tilemap data
@@ -62,19 +62,19 @@ class Tilemap():
         layers = map_data['layers']
 
         for _ in range(len(layers)):
-            self.map_data.append(list)
+            self.data.append(list)
         
         # Get height and width (in no. of tiles)
-        self.map_w = map_data['width']
-        self.map_h = map_data['height']
+        self.w = map_data['width']
+        self.h = map_data['height']
 
         for i, layer in enumerate(layers):
-            for row in range(self.map_h):
-                self.map_data[i] = layer['data']
+            for row in range(self.h):
+                self.data[i] = layer['data']
 
-                for col in range(self.map_w):
+                for col in range(self.w):
                     # Calculate the tile index
-                    tile_index = self.map_data[i][col + self.map_w * row] - 1
+                    tile_index = self.data[i][col + self.w * row] - 1
 
                     # Skip if (empty tile)
                     if tile_index >= 0:  
