@@ -4,7 +4,7 @@ class Grid:
         self.screen = screen
         self.cell_size = 32
         self.grid_size = (tilemap.w, tilemap.h)
-        
+
         self.data = []
 
         self.generate_grid(tilemap.data[0])
