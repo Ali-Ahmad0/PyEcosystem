@@ -1,3 +1,7 @@
+import random
+import pygame
+from stag import *
+from wolf import *
 
 class Grid:
     def __init__(self, screen, tilemap):
@@ -6,12 +10,16 @@ class Grid:
         self.grid_size = (tilemap.w, tilemap.h)
 
         self.data = []
+        
+        self.stag_list = []
+        self.wolf_list = []
 
         self.generate_grid(tilemap.data[0])
+        self.spawn_creatures()
 
     def print_data(self):
-        for col in self.data:
-            print(col)
+        for row in self.data:
+            print(row)
 
     def generate_grid(self, map_data):
         
@@ -43,23 +51,41 @@ class Grid:
             # ' ' - path
             # 'G' - grass
             # 'N' - next to water
-            tile_type = ''
+            cell_type = ''
             if (tile_index == 0):
-                tile_type = 'X'
+                cell_type = 'X'
 
             elif (tile_index >= 30 and tile_index <= 37):
-                tile_type = 'G'
+                cell_type = 'G'
             
             elif (tile_index >= 111 and tile_index <= 122):
-                tile_type = 'W'
+                cell_type = 'W'
 
             else:
-                tile_type = ' '
+                cell_type = ' '
             
-            self.data[j].append(tile_type)
+            self.data[j].append(cell_type)
 
         # Update tiles next to water
         for y in range(self.grid_size[1]):
             for x in range(self.grid_size[0]):
                 if self.data[y][x] == ' ' and is_next_to_water(x, y, self.grid_size):
                     self.data[y][x] = 'N'
+
+    def spawn_creatures(self):
+        for i, data_row in enumerate(self.data):
+            for j, cell_type in enumerate(data_row):
+                if cell_type == ' ':
+                    # Calculate the tile pixel coordinates
+                    x = (j - i) * 16
+                    y = (j + i) * 8 
+                    
+                    # Ensure the coordinates are within valid bounds
+                    if 0 <= x < len(self.data[0]) * 16 and 0 <= y < len(self.data) * 8:
+                        # Spawn a stag with a 2.5% chance
+                        if random.random() < 0.025:
+                            self.stag_list.append(Stag(x + 3, y - 20))
+
+                        # Spawn a wolf with a 2.5% chance
+                        elif random.random() > 0.975:
+                            self.wolf_list.append(Wolf(x - 16, y - 24))

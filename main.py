@@ -39,6 +39,21 @@ def update_camera():
                 Camera.zoom -= 1 if Camera.zoom > 1 else 0
                 last_zoom_time = current_time
 
+# Debugging for spawn testing
+last_spawn_time = 0
+
+def test_spawn(grid):
+    global last_spawn_time
+    current_time = pygame.time.get_ticks()
+
+    if current_time - last_spawn_time > 3000:
+        grid.stag_list.clear()
+        grid.wolf_list.clear()
+
+        grid.spawn_creatures()
+
+        last_spawn_time = current_time
+
 class Main():
     def __init__(self):
         # Initialize pygame
@@ -54,18 +69,17 @@ class Main():
 
         # Initialize grid with world_map
         self.grid = Grid(self.screen, self.world_map)
-        self.stag = Stag(0, 0)
-        self.wolf = Wolf(-16, 196)
-        self.wolf.anim_sprite.cur_animation = "idle_se"
-
-        self.grid.print_data()
 
     # Simulation render logic
     def render(self):
         self.screen.fill((0, 0, 0))
         self.world_map.render(self.screen)
-        self.stag.render(self.screen)
-        self.wolf.render(self.screen)
+
+        for stag in self.grid.stag_list:
+            stag.render(self.screen)
+
+        for wolf in self.grid.wolf_list:
+            wolf.render(self.screen)
 
         pygame.display.update()
 
@@ -80,6 +94,7 @@ class Main():
         
         update_camera()
         
+        test_spawn(self.grid)
         self.clock.tick(60)
 
     def main_loop(self):
